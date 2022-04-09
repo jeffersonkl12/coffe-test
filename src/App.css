@@ -3,8 +3,8 @@
 
   position: relative;
   background-color: black;
+  overflow-x: hidden;
 }
-
 
 .container{
 
@@ -17,7 +17,6 @@
   background-size: auto;
   background-position: center;
  
-
 }
 
 .coffe-section{
@@ -33,6 +32,15 @@
 
 }
 
+.coffe-list-container{ 
+
+  padding: 1rem;
+
+  width: 40vw;
+  margin: auto;
+ 
+
+}
 
 
 *{
@@ -40,11 +48,18 @@
   letter-spacing: 1.8px;
 }
 
-@media screen and (max-width: 1300px){
+@media  (max-width: 1300px){
 
 
   .container{
     padding: 0;
+  }
+
+  .coffe-list-container{ 
+
+    display: none;
+    
+
   }
 
 

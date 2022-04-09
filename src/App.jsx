@@ -4,9 +4,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import CoffeItem from "./components/coffeItem";
 import Coffe1 from "./components/img/coffe-1.png";
-import Footer from "./components/footers/footer";
+import CoffeList from "./components/navs/coffeList";
+import {useRef} from "react";
+
 
 const App = () => {
+
+  const sliderRef = useRef(null);
 
   const settings = {
     dots: true,
@@ -16,8 +20,8 @@ const App = () => {
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3500,
-
-  
+    arrows: false,
+    dots: false
   };
 
   const coffe = {
@@ -30,7 +34,13 @@ const App = () => {
 
   }
 
-  const lista = ["teste", "teste", "teste"];
+  function clickCoffeList (v) {
+
+    sliderRef.current.slickGoTo(v);
+    
+  }
+
+  
 
   return (
     <div className="App">
@@ -38,7 +48,7 @@ const App = () => {
 
       <div className="container">
         <section className="coffe-section">
-            <Slider {...settings}>
+            <Slider {...settings} ref={sliderRef}>
 
               <div >
                 <CoffeItem {...coffe} />
@@ -58,12 +68,16 @@ const App = () => {
 
             </Slider>
 
+            <div className="coffe-list-container">
+
+               <CoffeList clickEvent={clickCoffeList} evento={(e)=>{alert("clickou no teste")}}></CoffeList>
+
+            </div>
+
         </section>
       </div>
 
-      <Footer lista={lista}></Footer>
-
-
+  
     </div>
   );
 }

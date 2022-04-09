@@ -19,7 +19,6 @@ const Title = ({title, info, classe}) =>{
 
 Title.propTypes = {
 
-
 title: PropTypes.string.isRequired,
 info: PropTypes.string,
 classe: PropTypes.string
