@@ -1,0 +1,18 @@
+.nav-list{
+
+
+    color: white;
+
+    & > *{
+        padding: 5px;
+    }
+    
+    & > *:not(:first-child){
+
+        margin-top: 1rem;
+       
+    
+    }
+
+
+}
