@@ -8,20 +8,35 @@
         h1{
             font-size: 5rem;
             color: white;
-
+            
         }
 
         p{
 
             color: $main-color;
             text-align: right;
+            
         }
 
+
+
         @media screen and (max-width: 1100px){
+            
+            &{
+                max-width: max-content;
+            }
 
             h1{
                 font-size: 3.8rem;
             }
 
         }
+
+        @media screen and (max-width: 600px){
+            &{
+                max-width: 100%;
+            }
+        }
+
+       
 }

@@ -1,0 +1,112 @@
+.App {
+
+
+  position: relative;
+  background-color: black;
+  overflow-x: hidden;
+
+
+  .slider-coffe {
+
+    .slider-coffe-item {
+
+      padding: 0 50px;
+
+    }
+
+  }
+}
+
+.container {
+
+
+  padding: 0 9.5vw;
+  position: relative;
+  z-index: 1;
+
+
+  background-size: auto;
+  background-position: center;
+
+}
+
+.coffe-section {
+
+
+  padding-top: 2.5rem;
+
+}
+
+.footer {
+
+  margin-top: 5rem;
+
+}
+
+.coffe-list-container {
+
+  padding: 1rem;
+
+  width: 50vw;
+  margin: auto;
+
+  .slider-navbar {
+
+    .slider-coffe {
+
+      margin: 0 2rem;
+      width: 8vw;
+      filter: grayscale(100%);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      position: relative;
+
+
+      &.ativado {
+        filter: grayscale(0);
+        transform: perspective(120px) translateZ(20px);
+        //width: 9.5vw;
+
+      }
+
+    }
+
+  }
+
+
+
+}
+
+
+
+* {
+
+  letter-spacing: 1.8px;
+}
+
+
+@media (max-width: 1400px) {
+
+
+  .container {
+    padding: 0 7vw;
+  }
+
+}
+
+@media (max-width: 1300px) {
+
+
+  .container {
+    padding: 0;
+  }
+
+  .coffe-list-container {
+
+    display: none;
+
+
+  }
+
+
+}

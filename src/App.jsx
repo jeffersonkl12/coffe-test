@@ -1,19 +1,24 @@
-import './App.css';
+import './App.scss';
 import Header from "./components/header";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import CoffeItem from "./components/coffeItem";
 import Coffe1 from "./components/img/coffe-1.png";
 import CoffeList from "./components/navs/coffeList";
-import {useRef} from "react";
+import { useRef, useState, useEffect } from "react";
 
 
 const App = () => {
 
-  const sliderRef = useRef(null);
+  const sliderRef1 = useRef(null);
+  const sliderRef2 = useRef(null);
+  const ativado = useRef(null);
+
+
+  const [slider1, setSlider1] = useState(null);
+  const [slider2, setSlider2] = useState(null);
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 1000,
     slidesToShow: 1,
@@ -21,7 +26,8 @@ const App = () => {
     autoplay: false,
     autoplaySpeed: 3500,
     arrows: false,
-    dots: false
+    dots: false,
+
   };
 
   const coffe = {
@@ -34,13 +40,48 @@ const App = () => {
 
   }
 
-  function clickCoffeList (v) {
+  const clickCoffeList = (e) => {
+    console.log(e.target);
+    if (ativado.current.contains(e.target) && e.target.tagName.toLowerCase() === "img") {
 
-    sliderRef.current.slickGoTo(v);
-    
+      ativado.current.querySelectorAll(".slider-coffe").forEach((v, i) => {
+
+        v.classList.remove("ativado");
+
+        if (v.contains(e.target)) {
+          v.classList.toggle("ativado");
+        }
+
+      });
+
+    }
+
   }
 
-  
+  const changeListCoffe = (index) => {
+
+
+    ativado.current.querySelectorAll(".slider-coffe").forEach((v, i) => {
+
+      v.classList.remove("ativado");
+      if (i === index) {
+
+        v.classList.toggle("ativado");
+      }
+
+    });
+
+
+  }
+
+
+
+  useEffect(() => {
+
+    setSlider1(sliderRef1.current);
+    setSlider2(sliderRef2.current);
+  }, []);
+
 
   return (
     <div className="App">
@@ -48,36 +89,57 @@ const App = () => {
 
       <div className="container">
         <section className="coffe-section">
-            <Slider {...settings} ref={sliderRef}>
+          <Slider {...settings}
+            ref={sliderRef1}
+            asNavFor={slider2}
+            beforeChange={(i,i2) => { changeListCoffe(i2)}}
+            className="slider-coffe">
 
-              <div >
-                <CoffeItem {...coffe} />
+            <div className="slider-coffe-item">
+              <CoffeItem {...coffe} />
 
+            </div>
+            <div className="slider-coffe-item">
+
+              <CoffeItem {...coffe} />
+
+            </div>
+            <div className="slider-coffe-item">
+
+              <CoffeItem {...coffe} />
+
+            </div >
+
+          </Slider>
+
+          <div className="coffe-list-container" onClick={clickCoffeList} ref={ativado}>
+
+            <Slider
+              className="slider-navbar"
+              slidesToShow={3}
+              swipeToSlide={true}
+              focusOnSelect={true}
+              ref={sliderRef2}
+              asNavFor={slider1}
+
+            >
+              <div>
+                <figure className="slider-coffe ativado" ><img src={Coffe1} /></figure>
               </div>
               <div>
-
-                <CoffeItem {...coffe} />
-
+                <figure className="slider-coffe" ><img src={Coffe1} /></figure>
               </div>
               <div>
-
-                <CoffeItem {...coffe} />
-
-
+                <figure className="slider-coffe" ><img src={Coffe1} /></figure>
               </div>
 
             </Slider>
-
-            <div className="coffe-list-container">
-
-               <CoffeList clickEvent={clickCoffeList} evento={(e)=>{alert("clickou no teste")}}></CoffeList>
-
-            </div>
+          </div>
 
         </section>
       </div>
 
-  
+
     </div>
   );
 }

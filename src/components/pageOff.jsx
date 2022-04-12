@@ -5,7 +5,7 @@ const PageOff = () =>{
 
     return (
 
-        <p>erri desconhecido</p>
+        <p>erro desconhecido</p>
 
     )
 
