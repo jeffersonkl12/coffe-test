@@ -4,7 +4,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import CoffeItem from "./components/coffeItem";
 import Coffe1 from "./components/img/coffe-1.png";
-import CoffeList from "./components/navs/coffeList";
 import { useRef, useState, useEffect } from "react";
 
 
